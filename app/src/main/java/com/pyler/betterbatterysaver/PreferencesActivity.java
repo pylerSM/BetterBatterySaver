@@ -88,7 +88,7 @@ public class PreferencesActivity extends PreferenceActivity {
             // **** Battery battery saver settings **** //
             final PreferenceScreen appBatterySavingSettings = (PreferenceScreen) findPreference("app_battery_saving_settings");
 
-            if (isXposedModuleEnabled()) { //TODO
+            if (!isXposedModuleEnabled()) {
                 mainSettings.removePreference(appBatterySavingSettings);
             }
 
@@ -182,33 +182,34 @@ public class PreferencesActivity extends PreferenceActivity {
             screenTimeoutOff.setOnPreferenceChangeListener(listener);
             screenTimeoutOn.setOnPreferenceChangeListener(listener);
 
+            // **** App batery saving settings **** //
+
             Preference useAppBatterySaving = (Preference) findPreference("app_battery_saving");
-            final PreferenceCategory appSettings = (PreferenceCategory) findPreference("app_settings");
-            boolean useAppBatterySavingValue = mUtils.getBooleanPreference("app_battery_saving");
-            if (useAppBatterySavingValue) {
-                appBatterySavingSettings.addPreference(appSettings);
-                reloadAppsList();
-            } else {
-                appBatterySavingSettings.removePreference(appSettings);
-
-            }
-
             if (useAppBatterySaving != null) {
+                final PreferenceCategory appSettings = (PreferenceCategory) findPreference("app_settings");
+                boolean useAppBatterySavingValue = mUtils.getBooleanPreference("app_battery_saving");
+                if (useAppBatterySavingValue) {
+                    appBatterySavingSettings.addPreference(appSettings);
+                    reloadAppsList();
+                } else {
+                    appBatterySavingSettings.removePreference(appSettings);
+
+                }
 
                 useAppBatterySaving.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                    @Override
-                    public boolean onPreferenceChange(
-                            Preference preference, Object newValue) {
-                        boolean set = (boolean) newValue;
-                        if (set) {
-                            appBatterySavingSettings.addPreference(appSettings);
-                        } else {
-                            appBatterySavingSettings.removePreference(appSettings);
+                        @Override
+                        public boolean onPreferenceChange(
+                                Preference preference, Object newValue) {
+                            boolean set = (boolean) newValue;
+                            if (set) {
+                                appBatterySavingSettings.addPreference(appSettings);
+                            } else {
+                                appBatterySavingSettings.removePreference(appSettings);
 
+                            }
+                            return true;
                         }
-                        return true;
-                    }
-                });
+                    });
             }
 
             // **** Settings **** //
