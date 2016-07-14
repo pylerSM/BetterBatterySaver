@@ -5,6 +5,7 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
@@ -52,8 +53,10 @@ public class AppSettingsActivity extends PreferenceActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            getPreferenceManager()
-                    .setSharedPreferencesMode(MODE_WORLD_READABLE);
+            if (Build.VERSION.SDK_INT < 24) {
+                getPreferenceManager()
+                        .setSharedPreferencesMode(MODE_WORLD_READABLE);
+            }
             addPreferencesFromResource(R.xml.app_settings);
             mPrefs = PreferenceManager.getDefaultSharedPreferences(mContext);
 

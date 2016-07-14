@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ServiceInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
@@ -55,8 +56,10 @@ public class AppServiceSettingsActivity extends PreferenceActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            getPreferenceManager()
-                    .setSharedPreferencesMode(MODE_WORLD_READABLE);
+            if (Build.VERSION.SDK_INT < 24) {
+                getPreferenceManager()
+                        .setSharedPreferencesMode(MODE_WORLD_READABLE);
+            }
             addPreferencesFromResource(R.xml.app_services);
             mPrefs = PreferenceManager.getDefaultSharedPreferences(mContext);
 

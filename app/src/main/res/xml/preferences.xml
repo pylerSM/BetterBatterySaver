@@ -88,6 +88,10 @@
                 android:title="Turn off Airplane mode" />
             <CheckBoxPreference
                 android:defaultValue="false"
+                android:key="turn_doze_off"
+                android:title="Turn off Doze" />
+            <CheckBoxPreference
+                android:defaultValue="false"
                 android:key="turn_bluetooth_off"
                 android:title="Turn off Bluetooth" />
             <CheckBoxPreference
@@ -140,6 +144,10 @@
                 android:defaultValue="false"
                 android:key="turn_airplane_mode_on"
                 android:title="Turn on Airplane mode" />
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="turn_doze_on"
+                android:title="Turn on Doze" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_bluetooth_on"

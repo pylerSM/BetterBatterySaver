@@ -58,8 +58,10 @@ public class PreferencesActivity extends PreferenceActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            getPreferenceManager()
-                    .setSharedPreferencesMode(MODE_WORLD_READABLE);
+            if (Build.VERSION.SDK_INT < 24) {
+                getPreferenceManager()
+                        .setSharedPreferencesMode(MODE_WORLD_READABLE);
+            }
             addPreferencesFromResource(R.xml.preferences);
             mPrefs = PreferenceManager.getDefaultSharedPreferences(mContext);
             PreferenceScreen mainSettings = (PreferenceScreen) findPreference("better_battery_saver");
@@ -97,9 +99,15 @@ public class PreferencesActivity extends PreferenceActivity {
             final PreferenceCategory batterySaverOn = (PreferenceCategory) findPreference("battery_saver_on");
             final PreferenceCategory batterySaverOff = (PreferenceCategory) findPreference("battery_saver_off");
             PreferenceScreen appServiceManager = (PreferenceScreen) findPreference("app_services_manager");
+
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
                 batterySaverOn.removePreference(findPreference("turn_android_saver_off"));
                 batterySaverOff.removePreference(findPreference("turn_android_saver_on"));
+            }
+
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+                batterySaverOn.removePreference(findPreference("turn_doze_off"));
+                batterySaverOff.removePreference(findPreference("turn_doze_on"));
             }
 
             if (!mUtils.hasRoot()) {
@@ -121,8 +129,12 @@ public class PreferencesActivity extends PreferenceActivity {
                     batterySaverOff.removePreference(findPreference("turn_android_saver_on"));
                 }
 
-                //TODO
-                //mainSettings.removePreference(appServiceManager);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    batterySaverOn.removePreference(findPreference("turn_doze_off"));
+                    batterySaverOff.removePreference(findPreference("turn_doze_on"));
+                }
+
+                mainSettings.removePreference(appServiceManager);
             }
 
             reloadAppsList();
@@ -263,6 +275,7 @@ public class PreferencesActivity extends PreferenceActivity {
         }
 
         private void openManageWriteSettings() {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return;
             AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
             dialog.setTitle(R.string.modify_system_settings);
             dialog.setMessage(R.string.grant_write_system_settings_permission_message);
@@ -366,7 +379,7 @@ public class PreferencesActivity extends PreferenceActivity {
 
             @Override
             protected Void doInBackground(Void... arg0) {
-                List<String[]> sortedApps = new ArrayList<String[]>();
+                List<String[]> sortedApps = new ArrayList<>();
                 if (appSettings != null) appSettings.removeAll();
                 if (appServiceSettings != null) appServiceSettings.removeAll();
                 for (ApplicationInfo app : packages) {
@@ -402,8 +415,9 @@ public class PreferencesActivity extends PreferenceActivity {
                         }
                     });
 
-                    Preference newServicePreference = newPreference;
-                    newServicePreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                    if (appSettings != null) appSettings.addPreference(newPreference);
+
+                    newPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                         @Override
                         public boolean onPreferenceClick(Preference preference) {
                             Intent openAppSettings = new Intent(mContext, AppServiceSettingsActivity.class);
@@ -413,9 +427,9 @@ public class PreferencesActivity extends PreferenceActivity {
                             return false;
                         }
                     });
-                    if (appSettings != null) appSettings.addPreference(newPreference);
+
                     if (appServiceSettings != null)
-                        appServiceSettings.addPreference(newServicePreference);
+                        appServiceSettings.addPreference(newPreference);
                 }
 
                 return null;

@@ -9,9 +9,6 @@ import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
-/**
- * Created by Dávid Bolvanský on 13.7.2016.
- */
 public class AlarmController {
     public static final String TAG = "AlarmController";
     public static final String KEY = "disable_alarms";

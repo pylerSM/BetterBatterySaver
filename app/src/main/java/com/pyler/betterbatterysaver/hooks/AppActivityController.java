@@ -10,9 +10,6 @@ import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
-/**
- * Created by Dávid Bolvanský on 13.7.2016.
- */
 public class AppActivityController {
     public static final String TAG = "AppActivityController";
     public static final String KEY = "disable_app_launch";

@@ -22,7 +22,7 @@ public class Utils {
 
     public Utils(Context context) {
         this.mContext = context;
-        this.mPrefs = (context != null) ? context.getSharedPreferences(Constants.PREFS_NAME, Context.MODE_WORLD_READABLE) : null;
+        this.mPrefs = (context != null) ? context.getSharedPreferences(Constants.PREFS_NAME, (Build.VERSION.SDK_INT < 24) ? Context.MODE_WORLD_READABLE : Context.MODE_PRIVATE) : null;
     }
 
     public void setPrefsFileWorldReadable() {

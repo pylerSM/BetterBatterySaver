@@ -179,6 +179,11 @@ public class BetterBatterySaverReceiver extends BroadcastReceiver {
                     device.setAirplaneMode(false);
                     Logger.i(TAG, "Airplane mode turned off");
                 }
+
+                if (mUtils.getBooleanPreference("turn_doze_off")) {
+                    device.setDozeMode(false);
+                    Logger.i(TAG, "Doze turned off");
+                }
             }
         } else {
             if (mUtils.getBooleanPreference("turn_wifi_on")) {
@@ -227,6 +232,11 @@ public class BetterBatterySaverReceiver extends BroadcastReceiver {
                 if (mUtils.getBooleanPreference("turn_airplane_mode_on")) {
                     device.setAirplaneMode(true);
                     Logger.i(TAG, "Airplane mode turned on");
+                }
+
+                if (mUtils.getBooleanPreference("turn_doze_on")) {
+                    device.setDozeMode(true);
+                    Logger.i(TAG, "Doze turned on");
                 }
             }
         }

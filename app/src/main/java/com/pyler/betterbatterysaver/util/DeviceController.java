@@ -132,7 +132,7 @@ public class DeviceController {
     public void setScreenTimeout(boolean mode) {
         if (mContext == null) return;
         if (!mUtils.canWriteSystemSettings()) return;
-        int screenTimeout = 120;
+        int screenTimeout;
         if (mode) {
             screenTimeout = mUtils.getIntPreference("screen_timeout_on");
             Settings.System.putInt(mContext.getContentResolver(),
@@ -154,6 +154,19 @@ public class DeviceController {
             Shell.SU.run("pm enable " + name);
         } else {
             Shell.SU.run("pm disable " + name);
+        }
+    }
+
+    public void setDozeMode(boolean mode) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return;
+        if (!Shell.SU.available()) return;
+        boolean enabled = "1".equals(Shell.SU.run("dumpsys deviceidle enabled").toString());
+        if (mode) {
+            Shell.SU.run("dumpsys deviceidle force-idle");
+        } else {
+            if (enabled) {
+                Shell.SU.run("dumpsys deviceidle disable");
+            }
         }
     }
 
