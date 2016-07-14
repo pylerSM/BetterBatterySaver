@@ -312,9 +312,9 @@ public class BetterBatterySaverReceiver extends BroadcastReceiver {
         if (!mUtils.areInfoNotificationsEnabled()) return;
         String title;
         if (mode) {
-            title = mContext.getString(R.string.saver_enabled);
+            title = mContext.getString(R.string.battery_saver_enabled);
         } else {
-            title = mContext.getString(R.string.saver_disabled);
+            title = mContext.getString(R.string.battery_saver_disabled);
         }
         Notification.Builder builder = new Notification.Builder(mContext)
                 .setContentText(title)

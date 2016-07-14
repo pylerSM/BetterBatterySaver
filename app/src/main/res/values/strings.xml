@@ -1,23 +1,23 @@
 <resources>
-    <string name="app_name">Better Battery Saver</string>
+    <string name="app_name" translatable="false">Better Battery Saver</string>
     <string name="battery_level_threshold">Battery level threshold [%s%%]</string>
     <string name="screen_timeout">Screen timetout [%s seconds]</string>
     <string name="modify_system_settings">Modify system settings</string>
     <string name="grant_write_system_settings_permission_message">If you want to use this feature, you need to grant permission to write system settings to this app.\nPlease enable writing system settings using provided switch in the next screen.</string>
-    <string name="grant_write_system_settings_permission">Grant write system settings</string>
+    <string name="grant_write_system_settings_permission">Grant permission</string>
     <string name="turn_on">Turn on</string>
     <string name="turn_off">Turn off</string>
     <string name="turn_on_message">Do you want to turn on Better Battery Saver now?</string>
     <string name="turn_off_message">Do you want to turn off Better Battery Saver now?</string>
-    <string name="saver_enabled">Better Battery Saver has been enabled.</string>
-    <string name="saver_disabled">Better Battery Saver has been disabled.</string>
+    <string name="battery_saver_enabled">Better Battery Saver has been enabled.</string>
+    <string name="battery_saver_disabled">Better Battery Saver has been disabled.</string>
     <string name="headsup_notifications">Heads-up notifications</string>
     <string name="reset_all_settings">Reset all settings</string>
     <string name="about">About</string>
     <string name="version">Version</string>
     <string name="developer">Developer</string>
     <string name="support">Support</string>
-    <string name="open_xda">Click to XDA thread</string>
+    <string name="open_xda">Click to open XDA thread</string>
     <string name="donate">Donate</string>
     <string name="donate_paypal">Click to donate via Paypal</string>
     <string name="battery_saving_settings">Battery saving settings</string>
@@ -43,11 +43,11 @@
     <string name="app_services_manager">App services manager</string>
     <string name="show_system_services">Show system services</string>
     <string name="app_service_settings">App service settings</string>
-    <string name="saver_settings">Saver settings</string>
+    <string name="battery_saver_settings">Battery saver settings</string>
     <string name="start_mode">Start mode</string>
     <string name="exit_mode">Exit mode</string>
-    <string name="show_info_notification">Show info notification</string>
-    <string name="show_info_notification_summary">Show info notification when enabled/disabled</string>
+    <string name="show_info_notifications">Show info notifications</string>
+    <string name="show_info_notifications_summary">Show info notifications when turned on/off</string>
     <string name="after_battery_saver_on">After battery saver is on</string>
     <string name="turn_device_off">Turn off device</string>
     <string name="turn_screen_off">Turn off screen</string>

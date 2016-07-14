@@ -80,12 +80,12 @@ public class Utils {
 
     public boolean areHeadsUpNotificationsEnabled() {
         if (mPrefs == null) return false;
-        return mPrefs.getBoolean("headsup_notification", false);
+        return mPrefs.getBoolean("headsup_notifications", false);
     }
 
     public boolean areInfoNotificationsEnabled() {
         if (mPrefs == null) return false;
-        return mPrefs.getBoolean("info_notification", false);
+        return mPrefs.getBoolean("info_notifications", false);
     }
 
     public boolean getBooleanPreference(String key) {

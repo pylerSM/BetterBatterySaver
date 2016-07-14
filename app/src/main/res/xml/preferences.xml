@@ -34,8 +34,8 @@
 
 
     <PreferenceScreen
-        android:key="Saver_settings"
-        android:title="@string/saver_settings">
+        android:key="battery_saver_settings"
+        android:title="@string/battery_saver_settings">
         <SeekBarPreference
             android:defaultValue="15"
             android:key="battery_level_threshold"
@@ -55,9 +55,9 @@
             android:title="@string/exit_mode" />
         <CheckBoxPreference
             android:defaultValue="false"
-            android:key="info_notification"
-            android:summary="@string/show_info_notification_summary"
-            android:title="@string/show_info_notification" />
+            android:key="info_notifications"
+            android:summary="@string/show_info_notifications_summary"
+            android:title="@string/show_info_notifications" />
         <PreferenceCategory
             android:key="battery_saver_on"
             android:title="@string/after_battery_saver_on">
