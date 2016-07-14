@@ -22,7 +22,7 @@ public class SystemSettingsEditor {
             return;
         }
         int value = (state) ? 1 : 0;
-        String command = String.format("settings set %s %s %d", namespace, key, value);
+        String command = String.format("settings put %s %s %d", namespace, key, value);
         Shell.SU.run(command);
     }
 
@@ -32,7 +32,7 @@ public class SystemSettingsEditor {
             Logger.i(TAG, "Cant set system settings, no root");
             return;
         }
-        String command = String.format("settings set %s %s %s", namespace, key, value);
+        String command = String.format("settings put %s %s %s", namespace, key, value);
         Shell.SU.run(command);
     }
 
@@ -58,7 +58,7 @@ public class SystemSettingsEditor {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             command = String.format("settings delete %s %s", namespace, key);
         } else {
-            command = String.format("settings set %s %s %s", namespace, key, "");
+            command = String.format("settings put %s %s %s", namespace, key, "");
         }
         Shell.SU.run(command);
     }

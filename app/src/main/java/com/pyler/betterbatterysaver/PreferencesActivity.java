@@ -9,7 +9,6 @@ import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,8 +21,8 @@ import android.preference.PreferenceScreen;
 
 import com.pyler.betterbatterysaver.activities.AppServiceSettingsActivity;
 import com.pyler.betterbatterysaver.activities.AppSettingsActivity;
-import com.pyler.betterbatterysaver.services.BatteryMonitorService;
 import com.pyler.betterbatterysaver.util.Constants;
+import com.pyler.betterbatterysaver.util.Logger;
 import com.pyler.betterbatterysaver.util.Utils;
 
 import java.util.ArrayList;
@@ -45,10 +44,7 @@ public class PreferencesActivity extends PreferenceActivity {
         mUtils = new Utils(this);
         super.onCreate(savedInstanceState);
         mContext = getApplicationContext();
-
-        WifiManager wifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
-        wifiManager.setWifiEnabled(false);
-        startService(new Intent(this, BatteryMonitorService.class));
+        Logger.i("ahoj", String.valueOf(true));
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new Settings()).commit();
     }
@@ -99,10 +95,12 @@ public class PreferencesActivity extends PreferenceActivity {
             final PreferenceCategory batterySaverOn = (PreferenceCategory) findPreference("battery_saver_on");
             final PreferenceCategory batterySaverOff = (PreferenceCategory) findPreference("battery_saver_off");
             PreferenceScreen appServiceManager = (PreferenceScreen) findPreference("app_services_manager");
+            PreferenceScreen settings = (PreferenceScreen) findPreference("settings");
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
                 batterySaverOn.removePreference(findPreference("turn_android_saver_off"));
                 batterySaverOff.removePreference(findPreference("turn_android_saver_on"));
+                settings.removePreference(findPreference("headsup_notifications"));
             }
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
@@ -114,27 +112,27 @@ public class PreferencesActivity extends PreferenceActivity {
                 batterySaverOn.removePreference(findPreference("turn_device_off"));
                 batterySaverOn.removePreference(findPreference("turn_screen_off"));
                 batterySaverOn.removePreference(findPreference("turn_mobile_data_off"));
-                batterySaverOn.removePreference(findPreference("turn_airplane_mode_off"));
+                batterySaverOn.removePreference(findPreference("turn_airplane_mode_on"));
                 batterySaverOn.removePreference(findPreference("turn_nfc_off"));
                 batterySaverOn.removePreference(findPreference("turn_gps_off"));
 
                 batterySaverOff.removePreference(findPreference("turn_screen_on"));
                 batterySaverOff.removePreference(findPreference("turn_mobile_data_on"));
-                batterySaverOff.removePreference(findPreference("turn_airplane_mode_on"));
+                batterySaverOff.removePreference(findPreference("turn_airplane_mode_off"));
                 batterySaverOff.removePreference(findPreference("turn_nfc_on"));
                 batterySaverOff.removePreference(findPreference("turn_gps_on"));
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    batterySaverOn.removePreference(findPreference("turn_android_saver_off"));
-                    batterySaverOff.removePreference(findPreference("turn_android_saver_on"));
+                    batterySaverOn.removePreference(findPreference("turn_android_saver_on"));
+                    batterySaverOff.removePreference(findPreference("turn_android_saver_off"));
                 }
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    batterySaverOn.removePreference(findPreference("turn_doze_off"));
-                    batterySaverOff.removePreference(findPreference("turn_doze_on"));
+                    batterySaverOn.removePreference(findPreference("turn_doze_on"));
+                    batterySaverOff.removePreference(findPreference("turn_doze_off"));
                 }
 
-               // mainSettings.removePreference(appServiceManager);
+                mainSettings.removePreference(appServiceManager);
             }
 
             reloadAppsList();

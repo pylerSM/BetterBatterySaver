@@ -146,6 +146,11 @@ public class BetterBatterySaverReceiver extends BroadcastReceiver {
                 Logger.i(TAG, "Screen timeout turned off");
             }
 
+            if (mUtils.getBooleanPreference("turn_brightness_off")) {
+                device.setBrightnessMode(false);
+                Logger.i(TAG, "Brightness turned off");
+            }
+
             // Root features
             if (mUtils.hasRoot()) {
                 if (mUtils.getBooleanPreference("turn_gps_off")) {
@@ -171,18 +176,19 @@ public class BetterBatterySaverReceiver extends BroadcastReceiver {
                     Logger.i(TAG, "Mobile data turned off");
                 }
 
-                if (mUtils.getBooleanPreference("turn_android_saver_off")) {
-                    device.setPowerSaveMode(false);
-                    Logger.i(TAG, "Android Battery Saver turned off");
-                }
-                if (mUtils.getBooleanPreference("turn_airplane_mode_off")) {
-                    device.setAirplaneMode(false);
-                    Logger.i(TAG, "Airplane mode turned off");
+                if (mUtils.getBooleanPreference("turn_android_saver_on")) {
+                    device.setPowerSaveMode(true);
+                    Logger.i(TAG, "Android Battery Saver turned on");
                 }
 
-                if (mUtils.getBooleanPreference("turn_doze_off")) {
-                    device.setDozeMode(false);
-                    Logger.i(TAG, "Doze turned off");
+                if (mUtils.getBooleanPreference("turn_airplane_mode_on")) {
+                    device.setAirplaneMode(true);
+                    Logger.i(TAG, "Airplane mode turned on");
+                }
+
+                if (mUtils.getBooleanPreference("turn_doze_on")) {
+                    device.setDozeMode(true);
+                    Logger.i(TAG, "Doze turned on");
                 }
             }
         } else {
@@ -202,6 +208,11 @@ public class BetterBatterySaverReceiver extends BroadcastReceiver {
             if (mUtils.getBooleanPreference("set_screen_timeout_on")) {
                 device.setScreenTimeout(true);
                 Logger.i(TAG, "Screen timeout turned on");
+            }
+
+            if (mUtils.getBooleanPreference("turn_brightness_on")) {
+                device.setBrightnessMode(true);
+                Logger.i(TAG, "Brightness turned on");
             }
 
             // Root
@@ -224,19 +235,18 @@ public class BetterBatterySaverReceiver extends BroadcastReceiver {
                     Logger.i(TAG, "Mobile data turned on");
                 }
 
-                if (mUtils.getBooleanPreference("turn_android_saver_on")) {
-                    device.setPowerSaveMode(true);
-                    Logger.i(TAG, "Android Battery Saver turned on");
+                if (mUtils.getBooleanPreference("turn_android_saver_off")) {
+                    device.setPowerSaveMode(false);
+                    Logger.i(TAG, "Android Battery Saver turned off");
+                }
+                if (mUtils.getBooleanPreference("turn_airplane_mode_off")) {
+                    device.setAirplaneMode(false);
+                    Logger.i(TAG, "Airplane mode turned off");
                 }
 
-                if (mUtils.getBooleanPreference("turn_airplane_mode_on")) {
-                    device.setAirplaneMode(true);
-                    Logger.i(TAG, "Airplane mode turned on");
-                }
-
-                if (mUtils.getBooleanPreference("turn_doze_on")) {
-                    device.setDozeMode(true);
-                    Logger.i(TAG, "Doze turned on");
+                if (mUtils.getBooleanPreference("turn_doze_off")) {
+                    device.setDozeMode(false);
+                    Logger.i(TAG, "Doze turned off");
                 }
             }
         }
@@ -278,6 +288,8 @@ public class BetterBatterySaverReceiver extends BroadcastReceiver {
                     action,
                     run).build();
             builder.addAction(runAction);
+        } else {
+            builder.addAction(R.drawable.ic_notification_turn_on, action, run);
         }
 
         if (android.os.Build.VERSION.SDK_INT <= android.os.Build.VERSION_CODES.M) {

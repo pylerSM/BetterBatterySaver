@@ -145,7 +145,11 @@ public class DeviceController {
     }
 
     public void setAirplaneMode(boolean mode) {
+        if (!Shell.SU.available()) return;
         SystemSettingsEditor.setBoolean(SystemSettingsEditor.GLOBAL, SystemSettingsEditor.AIRPLANE_MODE, mode);
+        String enabled = mode ? "true" : "false";
+        String command = String.format("am broadcast -a android.intent.action.AIRPLANE_MODE --ez state %s", enabled);
+        Shell.SU.run(command);
     }
 
     public void setServiceMode(String name, boolean mode) {

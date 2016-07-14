@@ -80,16 +80,16 @@
                 android:title="Turn off mobile data" />
             <CheckBoxPreference
                 android:defaultValue="false"
-                android:key="turn_android_saver_off"
-                android:title="Turn off Android battery saver" />
+                android:key="turn_android_saver_on"
+                android:title="Turn on Android battery saver" />
             <CheckBoxPreference
                 android:defaultValue="false"
-                android:key="turn_airplane_mode_off"
-                android:title="Turn off Airplane mode" />
+                android:key="turn_airplane_mode_on"
+                android:title="Turn on Airplane mode" />
             <CheckBoxPreference
                 android:defaultValue="false"
-                android:key="turn_doze_off"
-                android:title="Turn off Doze" />
+                android:key="turn_doze_on"
+                android:title="Turn on Doze" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_bluetooth_off"
@@ -138,16 +138,16 @@
                 android:title="Turn on mobile data" />
             <CheckBoxPreference
                 android:defaultValue="false"
-                android:key="turn_android_saver_on"
-                android:title="Turn on Android battery saver" />
+                android:key="turn_android_saver_off"
+                android:title="Turn off Android battery saver" />
             <CheckBoxPreference
                 android:defaultValue="false"
-                android:key="turn_airplane_mode_on"
-                android:title="Turn on Airplane mode" />
+                android:key="turn_airplane_mode_off"
+                android:title="Turn off Airplane mode" />
             <CheckBoxPreference
                 android:defaultValue="false"
-                android:key="turn_doze_on"
-                android:title="Turn on Doze" />
+                android:key="turn_doze_off"
+                android:title="Turn off Doze" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_bluetooth_on"
@@ -187,7 +187,7 @@
         android:title="Settings">
         <CheckBoxPreference
             android:defaultValue="false"
-            android:key="headsup_notification"
+            android:key="headsup_notifications"
             android:title="@string/headsup_notifications" />
         <Preference
             android:key="reset_all_settings"

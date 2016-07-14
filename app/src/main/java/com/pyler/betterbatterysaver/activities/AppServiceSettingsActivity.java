@@ -22,8 +22,6 @@ import com.pyler.betterbatterysaver.R;
 import com.pyler.betterbatterysaver.util.DeviceController;
 import com.pyler.betterbatterysaver.util.Utils;
 
-import eu.chainfire.libsuperuser.Shell;
-
 public class AppServiceSettingsActivity extends PreferenceActivity {
     public static Context mContext;
     public static SharedPreferences mPrefs;
@@ -88,7 +86,6 @@ public class AppServiceSettingsActivity extends PreferenceActivity {
                         @Override
                         public boolean onPreferenceChange(
                                 Preference preference, Object newValue) {
-                            boolean root = Shell.SU.available();
                             DeviceController device = new DeviceController(mContext);
                             boolean set = (boolean) newValue;
                             if (set) {
@@ -101,7 +98,7 @@ public class AppServiceSettingsActivity extends PreferenceActivity {
                                     device.setServiceMode(serviceComponentName, false);
                                 }
                             }
-                            return root;
+                            return true;
                         }
                     });
                     appServices.addPreference(serviceSetting);
