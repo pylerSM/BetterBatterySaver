@@ -77,5 +77,8 @@
     <string name="automatically">Automatically</string>
     <string name="notification">From notification</string>
     <string name="parallel_android_saver">Parallel with Android battery saver</string>
+    <string name="battery_saving">Battery saving</string>
+    <string name="enable_app_battery_saving">Enable battery saving for this app</string>
+    <string name="settings">Settings</string>
 
 </resources>

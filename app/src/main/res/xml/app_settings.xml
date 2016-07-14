@@ -4,8 +4,8 @@
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="battery_saving"
-        android:summary="Enable battery saving for this app"
-        android:title="Battery saving" />
+        android:summary="@string/enable_app_battery_saving"
+        android:title="@string/battery_saving" />
     <SeekBarPreference
         android:defaultValue="15"
         android:enabled="false"
