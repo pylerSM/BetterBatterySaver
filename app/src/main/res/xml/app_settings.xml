@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="app_settings">
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="battery_saving"
+        android:summary="Enable battery saving for this app"
+        android:title="Battery saving" />
+    <SeekBarPreference
+        android:defaultValue="15"
+        android:enabled="false"
+        android:key="battery_level_threshold"
+        android:max="100"
+        android:title="@string/battery_level_threshold" />
+    <PreferenceCategory
+        android:key="battery_saving_settings"
+        android:title="Battery saving settings">
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="disable_activities_run"
+            android:title="Do not run activities" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="disable_alarms"
+            android:title="Do not start alarms" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="disable_app_launch"
+            android:title="Do not launch app" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="set_lowest_app_brightness"
+            android:title="Set lowest app brightness" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="set_dark_app_theme"
+            android:title="Set dark app theme" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="disable_bluetooth_control"
+            android:title="Do not use Bluetooth" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="disable_camera_control"
+            android:title="Do not use camera" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="disable_network_connection"
+            android:title="Do not use network connection" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="disable_notifications"
+            android:title="Do not show notifications" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="disable_notification_lights"
+            android:title="Do not use notification lights" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="disable_services"
+            android:title="Do not start services" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="disable_vibrations"
+            android:title="Do not use vibrations" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="disable_wakelocks"
+            android:title="Do not use wakelocks" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="disable_wifi_control"
+            android:title="Do not use Wi-Fi" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="disable_wifi_ap_control"
+            android:title="Do not use Wi-Fi Access Point" />
+
+    </PreferenceCategory>
+</PreferenceScreen>
