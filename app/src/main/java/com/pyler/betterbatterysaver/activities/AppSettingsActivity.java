@@ -129,7 +129,7 @@ public class AppSettingsActivity extends PreferenceActivity {
                 PreferenceGroup pGroup = (PreferenceGroup) p;
                 int pCount = pGroup.getPreferenceCount();
                 for (int i = 0; i < pCount; i++) {
-                    getPreferenceList(pGroup.getPreference(i), list); // recursive call
+                    getPreferenceList(pGroup.getPreference(i), list);
                 }
             } else {
                 list.add(p);

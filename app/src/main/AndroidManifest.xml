@@ -32,6 +32,11 @@
             android:name=".activities.AppSettingsActivity"
             android:label="@string/app_name"></activity>
 
+
+        <activity
+            android:name=".activities.AppServiceSettingsActivity"
+            android:label="@string/app_name"></activity>
+
         <receiver android:name=".receivers.BetterBatterySaverReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BATTERY_CHANGED" />

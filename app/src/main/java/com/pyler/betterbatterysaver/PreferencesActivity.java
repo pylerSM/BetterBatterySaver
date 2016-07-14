@@ -43,6 +43,11 @@ public class PreferencesActivity extends PreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mUtils = new Utils(this);
+        if (Build.VERSION.SDK_INT >= 24) {
+            // Workaround for weird issue on N with dark theme and in-app created preferences
+            // (dark text on dark background)
+            setTheme(android.R.style.Theme_DeviceDefault_Light);
+        }
         super.onCreate(savedInstanceState);
         mContext = getApplicationContext();
 
@@ -134,7 +139,7 @@ public class PreferencesActivity extends PreferenceActivity {
                     batterySaverOff.removePreference(findPreference("turn_doze_on"));
                 }
 
-                mainSettings.removePreference(appServiceManager);
+               // mainSettings.removePreference(appServiceManager);
             }
 
             reloadAppsList();
