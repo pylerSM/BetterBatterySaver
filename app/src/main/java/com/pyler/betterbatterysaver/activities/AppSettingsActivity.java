@@ -68,6 +68,9 @@ public class AppSettingsActivity extends PreferenceActivity {
                 p.setKey(newKey);
                 if (p instanceof CheckBoxPreference) {
                     ((CheckBoxPreference) p).setChecked(mPrefs.getBoolean(newKey, false));
+                } else {
+                    // seekbarpreference
+                    mUtils.setValueSeekBarPreference(p, mPrefs.getInt(getKeyForPackage("battery_level_threshold"), 15));
                 }
             }
 

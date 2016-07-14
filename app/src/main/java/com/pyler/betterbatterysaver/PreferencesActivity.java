@@ -400,10 +400,13 @@ public class PreferencesActivity extends PreferenceActivity {
                 for (int i = 0; i < sortedApps.size(); i++) {
                     final String appName = sortedApps.get(i)[1];
                     final String packageName = sortedApps.get(i)[0];
-                    Preference newPreference = new Preference(mContext);
-                    newPreference.setTitle(appName);
-                    newPreference.setSummary(packageName);
-                    newPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                    Preference appPreference = new Preference(mContext);
+                    Preference servicePreference = new Preference(mContext);
+                    appPreference.setTitle(appName);
+                    servicePreference.setTitle(appName);
+                    appPreference.setSummary(packageName);
+                    servicePreference.setSummary(packageName);
+                    appPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                         @Override
                         public boolean onPreferenceClick(Preference preference) {
                             Intent openAppSettings = new Intent(mContext, AppSettingsActivity.class);
@@ -414,9 +417,10 @@ public class PreferencesActivity extends PreferenceActivity {
                         }
                     });
 
-                    if (appSettings != null) appSettings.addPreference(newPreference);
+                    if (appSettings != null) appSettings.addPreference(appPreference);
 
-                    newPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                    servicePreference.setOnPreferenceClickListener(null);
+                    servicePreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                         @Override
                         public boolean onPreferenceClick(Preference preference) {
                             Intent openAppSettings = new Intent(mContext, AppServiceSettingsActivity.class);
@@ -428,7 +432,7 @@ public class PreferencesActivity extends PreferenceActivity {
                     });
 
                     if (appServiceSettings != null)
-                        appServiceSettings.addPreference(newPreference);
+                        appServiceSettings.addPreference(servicePreference);
                 }
 
                 return null;

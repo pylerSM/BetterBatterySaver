@@ -4,8 +4,10 @@ import android.app.AndroidAppHelper;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.preference.Preference;
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -134,6 +136,15 @@ public class Utils {
 
     public boolean shouldHook(XSharedPreferences prefs, XC_LoadPackage.LoadPackageParam lpparam, String key) {
         return shouldHook(prefs, lpparam.packageName, key);
+    }
+
+    public void setValueSeekBarPreference(Preference preference, int value) {
+        try {
+            Class seekBarPreference = Class.forName("android.preference.SeekBarPreference");
+            Method setMax = seekBarPreference.getMethod("setProgress", int.class);
+            setMax.invoke(preference, value);
+        } catch (Exception e) {
+        }
     }
 
 }
