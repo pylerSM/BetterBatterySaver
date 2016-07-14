@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="start_mode">
-        <item>Automatically</item>
-        <item>From notification</item>
-        <item>Parallel with Android battery saver</item>
+        <item>@string/automatically</item>
+        <item>@string/notification</item>
+        <item>@string/parallel_android_saver</item>
     </string-array>
     <string-array name="start_mode_values" translatable="false">
         <item>auto</item>
@@ -12,9 +12,9 @@
     </string-array>
 
     <string-array name="exit_mode">
-        <item>Automatically</item>
-        <item>From notification</item>
-        <item>Parallel with Android battery saver</item>
+        <item>@string/automatically</item>
+        <item>@string/notification</item>
+        <item>@string/parallel_android_saver</item>
     </string-array>
     <string-array name="exit_mode_values" translatable="false">
         <item>auto</item>

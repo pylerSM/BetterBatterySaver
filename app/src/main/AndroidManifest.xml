@@ -13,7 +13,7 @@
             android:value="true" />
         <meta-data
             android:name="xposeddescription"
-            android:value="Per app controls" />
+            android:value="@string/app_battery_saving_settings" />
         <meta-data
             android:name="xposedminversion"
             android:value="54" />

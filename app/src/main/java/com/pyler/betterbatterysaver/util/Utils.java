@@ -50,7 +50,7 @@ public class Utils {
 
     public void setChargingMode(boolean mode) {
         if (mPrefs == null) return;
-        mPrefs.edit().putBoolean("charning", mode).apply();
+        mPrefs.edit().putBoolean("charging", mode).apply();
     }
 
     public void setBatteryLevel(int level) {

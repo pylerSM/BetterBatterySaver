@@ -2,32 +2,32 @@
     android:key="better_battery_saver">
     <PreferenceScreen
         android:key="app_battery_saving_settings"
-        android:title="App battery saving settings">
+        android:title="@string/app_battery_saving_settings">
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="app_battery_saving"
-            android:title="Use app battery saving" />
+            android:title="@string/app_battery_saving" />
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="show_system_apps"
-            android:title="Show system apps" />
+            android:title="@string/show_system_apps" />
         <PreferenceCategory
             android:key="app_settings"
-            android:title="App settings">
+            android:title="@string/app_settings">
 
         </PreferenceCategory>
     </PreferenceScreen>
 
     <PreferenceScreen
         android:key="app_services_manager"
-        android:title="App services manager">
+        android:title="@string/app_services_manager">
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="show_system_services"
-            android:title="Show system services" />
+            android:title="@string/show_system_services" />
         <PreferenceCategory
             android:key="app_service_settings"
-            android:title="App service settings">
+            android:title="@string/app_service_settings">
 
         </PreferenceCategory>
     </PreferenceScreen>
@@ -35,7 +35,7 @@
 
     <PreferenceScreen
         android:key="Saver_settings"
-        android:title="Saver settings">
+        android:title="@string/saver_settings">
         <SeekBarPreference
             android:defaultValue="15"
             android:key="battery_level_threshold"
@@ -46,74 +46,74 @@
             android:entries="@array/start_mode"
             android:entryValues="@array/start_mode_values"
             android:key="start_mode"
-            android:title="Start mode" />
+            android:title="@string/start_mode" />
         <MultiSelectListPreference
             android:defaultValue="@array/empty_array"
             android:entries="@array/exit_mode"
             android:entryValues="@array/exit_mode_values"
             android:key="exit_mode"
-            android:title="Exit mode" />
+            android:title="@string/exit_mode" />
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="info_notification"
-            android:summary="Show info notification when enabled/disabled"
-            android:title="Show info notification" />
+            android:summary="@string/show_info_notification_summary"
+            android:title="@string/show_info_notification" />
         <PreferenceCategory
             android:key="battery_saver_on"
-            android:title="After battery saver is on">
+            android:title="@string/after_battery_saver_on">
 
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_device_off"
-                android:title="Turn off device" />
+                android:title="@string/turn_device_off" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_screen_off"
-                android:title="Turn off screen" />
+                android:title="@string/turn_screen_off" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_wifi_off"
-                android:title="Turn off Wi-Fi" />
+                android:title="@string/turn_wifi_off" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_mobile_data_off"
-                android:title="Turn off mobile data" />
+                android:title="@string/turn_mobile_data_off" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_android_saver_on"
-                android:title="Turn on Android battery saver" />
+                android:title="@string/turn_android_saver_on" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_airplane_mode_on"
-                android:title="Turn on Airplane mode" />
+                android:title="@string/turn_airplane_mode_on" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_doze_on"
-                android:title="Turn on Doze" />
+                android:title="@string/turn_doze_on" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_bluetooth_off"
-                android:title="Turn off Bluetooth" />
+                android:title="@string/turn_bluetooth_off" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_nfc_off"
-                android:title="Turn off NFC" />
+                android:title="@string/turn_nfc_off" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_gps_off"
-                android:title="Turn off GPS" />
+                android:title="@string/turn_gps_off" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_auto_sync_off"
-                android:title="Turn off auto sync" />
+                android:title="@string/turn_auto_sync_off" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_brightness_off"
-                android:title="Set lowest brightness " />
+                android:title="@string/set_lowest_brightness" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="set_screen_timeout_off"
-                android:title="Set screen timeout " />
+                android:title="@string/set_screen_timeout" />
             <SeekBarPreference
                 android:defaultValue="30"
                 android:enabled="false"
@@ -123,55 +123,55 @@
         </PreferenceCategory>
         <PreferenceCategory
             android:key="battery_saver_off"
-            android:title="After battery saver is off">
+            android:title="@string/after_battery_saver_off">
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_screen_on"
-                android:title="Turn on screen" />
+                android:title="@string/turn_screen_on" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_wifi_on"
-                android:title="Turn on Wi-Fi" />
+                android:title="@string/turn_wifi_on" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_mobile_data_on"
-                android:title="Turn on mobile data" />
+                android:title="@string/turn_mobile_data_on" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_android_saver_off"
-                android:title="Turn off Android battery saver" />
+                android:title="@string/turn_android_saver_off" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_airplane_mode_off"
-                android:title="Turn off Airplane mode" />
+                android:title="@string/turn_airplane_mode_off" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_doze_off"
-                android:title="Turn off Doze" />
+                android:title="@string/turn_doze_off" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_bluetooth_on"
-                android:title="Turn on Bluetooth" />
+                android:title="@string/turn_bluetooth_on" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_nfc_on"
-                android:title="Turn on NFC" />
+                android:title="@string/turn_nfc_on" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_gps_on"
-                android:title="Turn on GPS" />
+                android:title="@string/turn_gps_on" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_auto_sync_on"
-                android:title="Turn on auto sync" />
+                android:title="@string/turn_auto_sync_on" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_brightness_on"
-                android:title="Set automatic brightness" />
+                android:title="@string/set_automatic_brightness" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="set_screen_timeout_on"
-                android:title="Set screen timeout" />
+                android:title="@string/set_screen_timeout" />
             <SeekBarPreference
                 android:defaultValue="120"
                 android:enabled="false"
