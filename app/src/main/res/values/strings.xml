@@ -35,7 +35,7 @@
     <string name="no_vibrations">Do not use vibrations</string>
     <string name="no_wakelocks">Do not use wakelocks</string>
     <string name="no_wifi_control">Do not use Wi-Fi</string>
-    <string name="no_wifi_ap_control">Do not use Wi-Fi Access Point</string>
+    <string name="no_wifi_ap_control">Do not use Wi-Fi AP</string>
     <string name="app_battery_saving_settings">App battery saving settings</string>
     <string name="app_battery_saving">Use app battery saving</string>
     <string name="show_system_apps">Show system apps</string>

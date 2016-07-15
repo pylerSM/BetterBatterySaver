@@ -238,7 +238,7 @@ public class PreferencesActivity extends PreferenceActivity {
 
                                                      @Override
                                                      public boolean onPreferenceClick(Preference preference) {
-                                                         openLink("https://google.sk"); // TODO
+                                                         openLink("http://forum.xda-developers.com/xposed/modules/mod-battery-saver-t3419064");
                                                          return false;
                                                      }
                                                  }
