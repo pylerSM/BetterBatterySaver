@@ -15,7 +15,7 @@ public class BluetoothController {
     public static final String KEY = "disable_bluetooth_control";
 
     public static void init(XSharedPreferences prefs, XC_LoadPackage.LoadPackageParam lpparam) {
-        if (!new Utils(null).shouldHook(prefs, lpparam, KEY)) return;
+        if (!new Utils().shouldHook(prefs, lpparam, KEY)) return;
 
 
         try {

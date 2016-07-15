@@ -15,7 +15,7 @@ public class AutoSyncController {
     public static final String KEY = "disable_auto_sync_control";
 
     public static void init(XSharedPreferences prefs, XC_LoadPackage.LoadPackageParam lpparam) {
-        if (!new Utils(null).shouldHook(prefs, lpparam, KEY)) return;
+        if (!new Utils().shouldHook(prefs, lpparam, KEY)) return;
 
         try {
             XposedBridge.hookAllMethods(ContentResolver.class, "setMasterSyncAutomatically", XC_MethodReplacement.returnConstant(null));
