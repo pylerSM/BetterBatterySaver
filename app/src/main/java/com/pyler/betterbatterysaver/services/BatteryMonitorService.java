@@ -13,7 +13,6 @@ import com.pyler.betterbatterysaver.util.Constants;
 
 public class BatteryMonitorService extends Service {
     private BroadcastReceiver receiver;
-
     @Override
     public IBinder onBind(Intent intent) {
         return null;

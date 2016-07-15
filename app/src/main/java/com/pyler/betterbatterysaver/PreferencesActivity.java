@@ -22,7 +22,6 @@ import android.preference.PreferenceScreen;
 import com.pyler.betterbatterysaver.activities.AppServiceSettingsActivity;
 import com.pyler.betterbatterysaver.activities.AppSettingsActivity;
 import com.pyler.betterbatterysaver.util.Constants;
-import com.pyler.betterbatterysaver.util.Logger;
 import com.pyler.betterbatterysaver.util.Utils;
 
 import java.util.ArrayList;
@@ -44,7 +43,6 @@ public class PreferencesActivity extends PreferenceActivity {
         mUtils = new Utils(this);
         super.onCreate(savedInstanceState);
         mContext = getApplicationContext();
-        Logger.i("ahoj", String.valueOf(true));
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new Settings()).commit();
     }

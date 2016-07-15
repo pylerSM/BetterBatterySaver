@@ -141,8 +141,8 @@ public class Utils {
     public void setValueSeekBarPreference(Preference preference, int value) {
         try {
             Class seekBarPreference = Class.forName("android.preference.SeekBarPreference");
-            Method setMax = seekBarPreference.getMethod("setProgress", int.class);
-            setMax.invoke(preference, value);
+            Method setProgress = seekBarPreference.getMethod("setProgress", int.class);
+            setProgress.invoke(preference, value);
         } catch (Exception e) {
         }
     }

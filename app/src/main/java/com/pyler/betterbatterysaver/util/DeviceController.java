@@ -104,7 +104,7 @@ public class DeviceController {
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.SCREEN_BRIGHTNESS, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
             Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.SCREEN_BRIGHTNESS, 200);
+                    Settings.System.SCREEN_BRIGHTNESS, 10);
         }
     }
 
