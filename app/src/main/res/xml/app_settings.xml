@@ -33,6 +33,11 @@
 
         <CheckBoxPreference
             android:defaultValue="false"
+            android:key="disable_auto_sync_control"
+            android:title="@string/no_auto_sync_control" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
             android:key="set_lowest_app_brightness"
             android:title="@string/lowest_app_brightness" />
 

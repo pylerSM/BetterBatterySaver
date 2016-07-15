@@ -83,5 +83,6 @@
     <string name="turn_device_off">Vypnúť zariadenie</string>
     <string name="turn_wifi_ap_off">Vypnúť prístupový bod Wi-Fi</string>
     <string name="turn_wifi_ap_on">Zapnúť prístupový bod Wi-Fi</string>
+    <string name="no_auto_sync_control">Nepoužívať automatickú synchronizáciu</string>
 
 </resources>
