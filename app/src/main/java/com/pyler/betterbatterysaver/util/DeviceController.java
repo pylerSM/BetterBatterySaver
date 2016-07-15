@@ -3,16 +3,16 @@ package com.pyler.betterbatterysaver.util;
 import android.bluetooth.BluetoothAdapter;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.PowerManager;
 import android.provider.Settings;
 
+import java.lang.reflect.Method;
+
 import eu.chainfire.libsuperuser.Shell;
 
-/**
- * Created by Dávid Bolvanský on 10.7.2016.
- */
 public class DeviceController {
     private Context mContext;
     private Utils mUtils;
@@ -43,6 +43,7 @@ public class DeviceController {
     public void setWiFiMode(boolean mode) {
         if (mContext == null) return;
         WifiManager wifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
+        if (wifiManager == null) return;
         wifiManager.setWifiEnabled(mode);
     }
 
@@ -171,6 +172,18 @@ public class DeviceController {
             if (enabled) {
                 Shell.SU.run("dumpsys deviceidle disable");
             }
+        }
+    }
+
+    public void setWiFiApMode(boolean mode) {
+        if (mContext == null) return;
+        if (!mUtils.canWriteSystemSettings()) return;
+        WifiManager wifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
+        if (wifiManager == null) return;
+        try {
+            Method setWifiApEnabled = WifiManager.class.getMethod("setWifiApEnabled", WifiConfiguration.class, boolean.class);
+            setWifiApEnabled.invoke(wifiManager, null, mode);
+        } catch (Exception ignored) {
         }
     }
 

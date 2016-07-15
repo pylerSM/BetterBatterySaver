@@ -81,5 +81,7 @@
     <string name="turn_doze_off">Vypnúť Doze</string>
     <string name="turn_doze_on">Zapnúť Doze</string>
     <string name="turn_device_off">Vypnúť zariadenie</string>
+    <string name="turn_wifi_ap_off">Vypnúť prístupový bod Wi-Fi</string>
+    <string name="turn_wifi_ap_on">Zapnúť prístupový bod Wi-Fi</string>
 
 </resources>

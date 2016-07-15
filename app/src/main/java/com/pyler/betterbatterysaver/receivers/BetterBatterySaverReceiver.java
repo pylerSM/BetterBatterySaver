@@ -132,10 +132,12 @@ public class BetterBatterySaverReceiver extends BroadcastReceiver {
                 device.setWiFiMode(false);
                 Logger.i(TAG, "Wi-Fi turned off");
             }
+
             if (mUtils.getBooleanPreference("turn_bluetooth_off")) {
                 device.setBluetoothMode(false);
                 Logger.i(TAG, "Bluetooth turned off");
             }
+
             if (mUtils.getBooleanPreference("turn_auto_sync_off")) {
                 device.setAutoSyncMode(false);
                 Logger.i(TAG, "Auto Sync turned off");
@@ -149,6 +151,11 @@ public class BetterBatterySaverReceiver extends BroadcastReceiver {
             if (mUtils.getBooleanPreference("turn_brightness_off")) {
                 device.setBrightnessMode(false);
                 Logger.i(TAG, "Brightness turned off");
+            }
+
+            if (mUtils.getBooleanPreference("turn_wifi-ap_off")) {
+                device.setWiFiApMode(false);
+                Logger.i(TAG, "Wi-Fi AP turned off");
             }
 
             // Root features
@@ -196,10 +203,12 @@ public class BetterBatterySaverReceiver extends BroadcastReceiver {
                 device.setWiFiMode(true);
                 Logger.i(TAG, "Wi-Fi turned on");
             }
+
             if (mUtils.getBooleanPreference("turn_bluetooth_on")) {
                 device.setBluetoothMode(true);
                 Logger.i(TAG, "Bluetooth turned on");
             }
+
             if (mUtils.getBooleanPreference("turn_auto_sync_on")) {
                 device.setAutoSyncMode(true);
                 Logger.i(TAG, "Auto Sync turned on");
@@ -213,6 +222,11 @@ public class BetterBatterySaverReceiver extends BroadcastReceiver {
             if (mUtils.getBooleanPreference("turn_brightness_on")) {
                 device.setBrightnessMode(true);
                 Logger.i(TAG, "Brightness turned on");
+            }
+
+            if (mUtils.getBooleanPreference("turn_wifi_ap_on")) {
+                device.setWiFiApMode(true);
+                Logger.i(TAG, "Wi-Fi AP turned on");
             }
 
             // Root

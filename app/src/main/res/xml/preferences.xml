@@ -76,6 +76,10 @@
                 android:title="@string/turn_wifi_off" />
             <CheckBoxPreference
                 android:defaultValue="false"
+                android:key="turn_wifi_ap_off"
+                android:title="@string/turn_wifi_ap_off" />
+            <CheckBoxPreference
+                android:defaultValue="false"
                 android:key="turn_mobile_data_off"
                 android:title="@string/turn_mobile_data_off" />
             <CheckBoxPreference
@@ -132,6 +136,10 @@
                 android:defaultValue="false"
                 android:key="turn_wifi_on"
                 android:title="@string/turn_wifi_on" />
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="turn_wifi_ap_on"
+                android:title="@string/turn_wifi_ap_on" />
             <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="turn_mobile_data_on"

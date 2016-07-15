@@ -80,5 +80,7 @@
     <string name="battery_saving">Battery saving</string>
     <string name="enable_app_battery_saving">Enable battery saving for this app</string>
     <string name="settings">Settings</string>
+    <string name="turn_wifi_ap_on">Turn Wi-Fi AP on</string>
+    <string name="turn_wifi_ap_off">Turn Wi-Fi AP off</string>
 
 </resources>

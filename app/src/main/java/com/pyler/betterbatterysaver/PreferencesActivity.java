@@ -1,5 +1,6 @@
 package com.pyler.betterbatterysaver;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -43,6 +44,7 @@ public class PreferencesActivity extends PreferenceActivity {
         mUtils = new Utils(this);
         super.onCreate(savedInstanceState);
         mContext = getApplicationContext();
+
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new Settings()).commit();
     }
@@ -271,6 +273,7 @@ public class PreferencesActivity extends PreferenceActivity {
             }
         }
 
+        @TargetApi(Build.VERSION_CODES.M)
         private void openManageWriteSettings() {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return;
             AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
@@ -305,6 +308,8 @@ public class PreferencesActivity extends PreferenceActivity {
             Preference brightnessOn = (Preference) findPreference("turn_brightness_on");
             Preference setScreenTimeoutOff = (Preference) findPreference("set_screen_timeout_off");
             Preference setScreenTimeoutOn = (Preference) findPreference("set_screen_timeout_on");
+            Preference wifiApOff = (Preference) findPreference("turn_wifi_ap_off");
+            Preference wifiApOn = (Preference) findPreference("turn_wifi_ap_on");
 
             if (!mUtils.canWriteSystemSettings()) {
                 Preference.OnPreferenceChangeListener listener = new Preference.OnPreferenceChangeListener() {
@@ -319,9 +324,13 @@ public class PreferencesActivity extends PreferenceActivity {
                 brightnessOn.setOnPreferenceChangeListener(listener);
                 setScreenTimeoutOff.setOnPreferenceChangeListener(listener);
                 setScreenTimeoutOn.setOnPreferenceChangeListener(listener);
+                wifiApOff.setOnPreferenceChangeListener(listener);
+                wifiApOn.setOnPreferenceChangeListener(listener);
             } else {
                 brightnessOff.setOnPreferenceChangeListener(null);
                 brightnessOn.setOnPreferenceChangeListener(null);
+                wifiApOff.setOnPreferenceChangeListener(null);
+                wifiApOn.setOnPreferenceChangeListener(null);
                 final Preference screenTimeoutOff = (Preference) findPreference("screen_timeout_off");
                 final Preference screenTimeoutOn = (Preference) findPreference("screen_timeout_on");
                 setScreenTimeoutOff.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
