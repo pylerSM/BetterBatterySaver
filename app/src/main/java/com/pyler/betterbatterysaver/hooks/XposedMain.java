@@ -19,6 +19,8 @@ public class XposedMain implements IXposedHookZygoteInit, IXposedHookLoadPackage
 
     @Override
     public void handleLoadPackage(LoadPackageParam lpparam) throws Throwable {
+        SelfHook.init(prefs, lpparam);
+
         if (!prefs.getBoolean("app_battery_saving", false)) return;
 
         ActivityController.init(prefs, lpparam);
@@ -32,7 +34,6 @@ public class XposedMain implements IXposedHookZygoteInit, IXposedHookLoadPackage
         ConnectionController.init(prefs, lpparam);
         NotificationController.init(prefs, lpparam);
         NotificationLightController.init(prefs, lpparam);
-        SelfHook.init(prefs, lpparam);
         ServiceController.init(prefs, lpparam);
         VibrationController.init(prefs, lpparam);
         WakelockController.init(prefs, lpparam);
