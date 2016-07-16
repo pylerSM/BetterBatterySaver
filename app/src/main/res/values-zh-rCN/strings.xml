@@ -18,6 +18,7 @@
     <string name="developer">开发者</string>
     <string name="support">支持</string>
     <string name="open_xda">点击打开XDA讨论页</string>
+    <string name="donate">捐赠</string>
     <string name="donate_paypal">点击通过Paypal捐赠</string>
     <string name="battery_saving_settings">省电设置</string>
     <string name="no_activities">不运行活动</string>
@@ -55,7 +56,7 @@
     <string name="set_screen_timeout">设置屏幕超时</string>
     <string name="set_automatic_brightness">设置为自动亮度</string>
     <string name="turn_auto_sync_on">打开自动同步</string>
-    <string name="turn_nfc_on">T打开NFC</string>
+    <string name="turn_nfc_on">打开NFC</string>
     <string name="turn_gps_on">打开GPS</string>
     <string name="turn_airplane_mode_off">关闭飞行模式</string>
     <string name="turn_doze_off">关闭Doze</string>
