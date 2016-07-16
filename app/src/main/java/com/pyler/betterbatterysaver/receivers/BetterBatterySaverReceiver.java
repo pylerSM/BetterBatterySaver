@@ -72,33 +72,36 @@ public class BetterBatterySaverReceiver extends BroadcastReceiver {
                 Logger.i(TAG, "ACTION_BATTERY_CHANGED intent has no extras");
                 return;
             }
-            //*****
+
+            boolean wasCharging = mUtils.isCharging();
+            int previousBatteryLevel = mUtils.getBatteryLevel();
+
             int plugged = intent.getIntExtra("plugged", -1);
             boolean isCharging = isCharging(plugged);
             mUtils.setChargingMode(isCharging);
-            int level = intent.getIntExtra("level", -1);
-            mUtils.setBatteryLevel(level);
-            Logger.i(TAG, "Battery level " + level + ", charging " + isCharging);
+            int batteryLevel = intent.getIntExtra("level", -1);
+            mUtils.setBatteryLevel(batteryLevel);
 
-            ///
+            Logger.i(TAG, "Battery level " + batteryLevel + ", charging " + isCharging);
+
+            if (batteryLevel == previousBatteryLevel && isCharging == wasCharging) {
+                return;
+            }
+
             int batteryLevelThreshold = mUtils.getBatteryLevelThreshold();
-            if (level == batteryLevelThreshold) {
+            if (batteryLevel == batteryLevelThreshold) {
                 setBetterBatterySaver(!isCharging(plugged));
 
-            } else if (level > batteryLevelThreshold) {
-                // 50 / 12 / 6
+            } else if (batteryLevel > batteryLevelThreshold) {
                 if (mUtils.getBatterBatterySaver()) {
                     setBetterBatterySaver(false);
                 }
-            } else if (level < batteryLevelThreshold) {
-                // 7 / 12 / 52
+            } else if (batteryLevel < batteryLevelThreshold) {
                 if (!mUtils.getBatterBatterySaver()) {
                     setBetterBatterySaver(true);
                 }
             }
 
-
-            //Toast.makeText(context, "Battery Receiver: " + level + "\tPlugged" + isCharging(plugged) + " Start: " + batteryLevelThreshold + "Raw: " + level, Toast.LENGTH_LONG).show();
         }
 
     }
