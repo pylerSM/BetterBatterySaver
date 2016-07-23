@@ -34,6 +34,7 @@ public class XposedMain implements IXposedHookZygoteInit, IXposedHookLoadPackage
         ConnectionController.init(prefs, lpparam);
         NotificationController.init(prefs, lpparam);
         NotificationLightController.init(prefs, lpparam);
+        ReceiverController.init(prefs, lpparam);
         ServiceController.init(prefs, lpparam);
         VibrationController.init(prefs, lpparam);
         WakelockController.init(prefs, lpparam);
