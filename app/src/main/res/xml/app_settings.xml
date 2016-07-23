@@ -73,6 +73,11 @@
 
         <CheckBoxPreference
             android:defaultValue="false"
+            android:key="disable_receivers"
+            android:title="@string/no_receivers" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
             android:key="disable_services"
             android:title="@string/no_services" />
 

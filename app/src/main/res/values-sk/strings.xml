@@ -84,5 +84,7 @@
     <string name="turn_wifi_ap_off">Vypnúť prístupový bod Wi-Fi</string>
     <string name="turn_wifi_ap_on">Zapnúť prístupový bod Wi-Fi</string>
     <string name="no_auto_sync_control">Nepoužívať automatickú synchronizáciu</string>
+    <string name="parallel_doze_mode">Pararelne s režimom Doze</string>
+    <string name="no_receivers">Nespúštať prijímače</string>
 
 </resources>

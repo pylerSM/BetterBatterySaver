@@ -54,10 +54,19 @@ public class Utils {
         if (mPrefs == null) return;
         mPrefs.edit().putBoolean("charging", mode).apply();
     }
+    public boolean isCharging() {
+        if (mPrefs == null) return false;
+        return mPrefs.getBoolean("charging", false);
+    }
 
     public void setBatteryLevel(int level) {
         if (mPrefs == null) return;
         mPrefs.edit().putInt("battery_level", level).apply();
+    }
+
+    public int getBatteryLevel() {
+        if (mPrefs == null) return -1;
+        return mPrefs.getInt("battery_level", -1);
     }
 
     public int getBatteryLevelThreshold() {

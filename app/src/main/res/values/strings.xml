@@ -83,5 +83,7 @@
     <string name="turn_wifi_ap_on">Turn Wi-Fi AP on</string>
     <string name="turn_wifi_ap_off">Turn Wi-Fi AP off</string>
     <string name="no_auto_sync_control">Do not use auto sync</string>
+    <string name="parallel_doze_mode">Parallel with Doze mode</string>
+    <string name="no_receivers">Do no start receivers</string>
 
 </resources>

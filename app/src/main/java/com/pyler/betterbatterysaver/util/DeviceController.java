@@ -36,6 +36,16 @@ public class DeviceController {
         }
     }
 
+    public boolean isDozeMode() {
+        if (mContext == null) return false;
+        PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return pm.isDeviceIdleMode();
+        } else {
+            return false;
+        }
+    }
+
     public void setPowerSaveMode(boolean mode) {
         SystemSettingsEditor.setBoolean(SystemSettingsEditor.GLOBAL, SystemSettingsEditor.LOW_POWER, mode);
     }
@@ -167,6 +177,7 @@ public class DeviceController {
         if (!Shell.SU.available()) return;
         boolean enabled = "1".equals(Shell.SU.run("dumpsys deviceidle enabled").toString());
         if (mode) {
+            Shell.SU.run("dumpsys deviceidle enable");
             Shell.SU.run("dumpsys deviceidle force-idle");
         } else {
             if (enabled) {

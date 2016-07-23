@@ -21,7 +21,4 @@
         <item>notification</item>
         <item>android_saver</item>
     </string-array>
-
-
-    <string-array name="empty_array" />
 </resources>

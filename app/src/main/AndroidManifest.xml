@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pyler.betterbatterysaver">
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,7 +26,7 @@
             android:value="54" />
 
         <activity
-            android:name=".PreferencesActivity"
+            android:name=".activities.PreferencesActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,16 +37,17 @@
 
         <activity
             android:name=".activities.AppSettingsActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name"/>
 
 
         <activity
             android:name=".activities.AppServiceSettingsActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name"/>
 
         <receiver android:name=".receivers.BetterBatterySaverReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BATTERY_CHANGED" />
+                <action android:name="android.os.action.DEVICE_IDLE_MODE_CHANGED" />
                 <action android:name="android.os.action.POWER_SAVE_MODE_CHANGED" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="com.pyler.betterbatterysaver.START" />
@@ -51,12 +59,5 @@
 
 
     </application>
-
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
 </manifest>
