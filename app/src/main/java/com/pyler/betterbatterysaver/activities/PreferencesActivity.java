@@ -1,4 +1,4 @@
-package com.pyler.betterbatterysaver;
+package com.pyler.betterbatterysaver.activities;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
@@ -20,8 +20,8 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 
-import com.pyler.betterbatterysaver.activities.AppServiceSettingsActivity;
-import com.pyler.betterbatterysaver.activities.AppSettingsActivity;
+import com.pyler.betterbatterysaver.BuildConfig;
+import com.pyler.betterbatterysaver.R;
 import com.pyler.betterbatterysaver.util.Constants;
 import com.pyler.betterbatterysaver.util.Utils;
 
@@ -197,19 +197,19 @@ public class PreferencesActivity extends PreferenceActivity {
                 }
 
                 useAppBatterySaving.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                        @Override
-                        public boolean onPreferenceChange(
-                                Preference preference, Object newValue) {
-                            boolean set = (boolean) newValue;
-                            if (set) {
-                                appBatterySavingSettings.addPreference(appSettings);
-                            } else {
-                                appBatterySavingSettings.removePreference(appSettings);
+                    @Override
+                    public boolean onPreferenceChange(
+                            Preference preference, Object newValue) {
+                        boolean set = (boolean) newValue;
+                        if (set) {
+                            appBatterySavingSettings.addPreference(appSettings);
+                        } else {
+                            appBatterySavingSettings.removePreference(appSettings);
 
-                            }
-                            return true;
                         }
-                    });
+                        return true;
+                    }
+                });
             }
 
             // **** Settings **** //

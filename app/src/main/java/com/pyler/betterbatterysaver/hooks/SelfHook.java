@@ -17,7 +17,7 @@ public class SelfHook {
             return;
         }
         try {
-            XposedHelpers.findAndHookMethod(Constants.PACKAGE_NAME + ".PreferencesActivity", lpparam.classLoader, "isXposedModuleEnabled", XC_MethodReplacement.returnConstant(true));
+            XposedHelpers.findAndHookMethod(Constants.PACKAGE_NAME + ".activities.PreferencesActivity", lpparam.classLoader, "isXposedModuleEnabled", XC_MethodReplacement.returnConstant(true));
         } catch (Throwable t) {
             Logger.i(TAG, t.getMessage());
         }

@@ -30,6 +30,7 @@ public class BatteryMonitorService extends Service {
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_BATTERY_CHANGED);
         filter.addAction(PowerManager.ACTION_POWER_SAVE_MODE_CHANGED);
+        filter.addAction(PowerManager.ACTION_DEVICE_IDLE_MODE_CHANGED);
         filter.addAction(Constants.INTENT_BETTER_BATTERY_SAVER_START);
         filter.addAction(Constants.INTENT_BETTER_BATTERY_SAVER_STOP);
         receiver = new BetterBatterySaverReceiver();

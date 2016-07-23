@@ -11,7 +11,7 @@ import android.os.BatteryManager;
 import android.os.Bundle;
 import android.os.PowerManager;
 
-import com.pyler.betterbatterysaver.PreferencesActivity;
+import com.pyler.betterbatterysaver.activities.PreferencesActivity;
 import com.pyler.betterbatterysaver.R;
 import com.pyler.betterbatterysaver.services.BatteryMonitorService;
 import com.pyler.betterbatterysaver.util.Constants;
@@ -39,13 +39,33 @@ public class BetterBatterySaverReceiver extends BroadcastReceiver {
         }
 
         if (PowerManager.ACTION_POWER_SAVE_MODE_CHANGED.equals(intent.getAction())) {
-            Set<String> startMode = mUtils.getStartMode();
-            if (!startMode.contains("android_saver")) return;
             if (new DeviceController(context).isPowerSaveMode()) {
-                setBetterBatterySaver(true);
-                Logger.i(TAG, "Bettery Battery Saver started since Android Battery Saver was turned on");
+                Set<String> startMode = mUtils.getStartMode();
+                if (startMode.contains("android_saver")) {
+                    setBetterBatterySaver(true);
+                    Logger.i(TAG, "Bettery Battery Saver started since Android Battery Saver was turned on");
+                }
             } else {
-                setBetterBatterySaver(false);
+                Set<String> exitMode = mUtils.getExitMode();
+                if (exitMode.contains("android_saver")) {
+                    setBetterBatterySaver(false);
+                }
+            }
+            return;
+        }
+
+        if (PowerManager.ACTION_DEVICE_IDLE_MODE_CHANGED.equals(intent.getAction())) {
+            if (new DeviceController(context).isDozeMode()) {
+                Set<String> startMode = mUtils.getStartMode();
+                if (startMode.contains("auto") && startMode.contains("doze_mode")) {
+                    manageBetterBatterySaver(true);
+                    Logger.i(TAG, "Bettery Battery Saver started since Doze mode was turned on");
+                }
+            } else {
+                Set<String> exitMode = mUtils.getExitMode();
+                if (exitMode.contains("auto") && exitMode.contains("doze_mode")) {
+                    manageBetterBatterySaver(false);
+                }
             }
             return;
         }
