@@ -22,7 +22,7 @@
     <string name="donate_paypal">点击通过Paypal捐赠</string>
     <string name="battery_saving_settings">省电设置</string>
     <string name="no_activities">不运行活动</string>
-    <string name="no_alarms">不打开定时器</string>
+    <string name="no_alarms">不允许定时器(Alarm)</string>
     <string name="no_app_launch">不启动应用</string>
     <string name="lowest_app_brightness">设置为最低亮度</string>
     <string name="dark_app_theme">设置为黑色主题</string>
@@ -33,7 +33,7 @@
     <string name="no_notification_lights">不使用通知灯</string>
     <string name="no_services">不启动服务</string>
     <string name="no_vibrations">不使用震动</string>
-    <string name="no_wakelocks">不使用唤醒锁</string>
+    <string name="no_wakelocks">不允许唤醒锁(Wakelock)</string>
     <string name="no_wifi_control">不使用Wi-Fi</string>
     <string name="no_wifi_ap_control">不使用Wi-Fi热点</string>
     <string name="app_battery_saving_settings">应用省电设置</string>
@@ -83,5 +83,7 @@
     <string name="turn_wifi_ap_on">打开Wi-Fi热点</string>
     <string name="turn_wifi_ap_off">关闭Wi-Fi热点</string>
     <string name="no_auto_sync_control">不使用自动同步</string>
+    <string name="parallel_doze_mode">与Doze模式同时</string>
+    <string name="no_receivers">不启动接收器(Receiver)</string>
 
 </resources>
