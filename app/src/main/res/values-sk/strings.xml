@@ -86,5 +86,8 @@
     <string name="no_auto_sync_control">Nepoužívať automatickú synchronizáciu</string>
     <string name="parallel_doze_mode">Pararelne s režimom Doze</string>
     <string name="no_receivers">Nespúštať prijímače</string>
+    <string name="app_receiver_settings">Nastavenia prijímačov aplikácií</string>
+    <string name="app_receivers_manager">Správca prijímačov aplikácií</string>
+    <string name="show_system_receivers">Zobraziť systémové prijímače</string>
 
 </resources>

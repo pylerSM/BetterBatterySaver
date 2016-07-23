@@ -73,18 +73,26 @@ public class PreferencesActivity extends PreferenceActivity {
                 }
             });
 
+            Preference.OnPreferenceChangeListener showSystemAppsListener = new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(
+                        Preference preference, Object newValue) {
+                    mPrefs.edit().putBoolean("show_system_apps", (boolean) newValue).apply();
+                    reloadAppsList();
+                    return true;
+                }
+            };
+
             Preference showSystemServices = (Preference) findPreference("show_system_services");
             if (showSystemServices != null) {
-                showSystemServices.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                    @Override
-                    public boolean onPreferenceChange(
-                            Preference preference, Object newValue) {
-                        mPrefs.edit().putBoolean("show_system_apps", (boolean) newValue).apply();
-                        reloadAppsList();
-                        return true;
-                    }
-                });
+                showSystemServices.setOnPreferenceChangeListener(showSystemAppsListener);
             }
+
+            Preference showSystemReceivers = (Preference) findPreference("show_system_receivers");
+            if (showSystemReceivers != null) {
+                showSystemReceivers.setOnPreferenceChangeListener(showSystemAppsListener);
+            }
+
             // **** Battery battery saver settings **** //
             final PreferenceScreen appBatterySavingSettings = (PreferenceScreen) findPreference("app_battery_saving_settings");
 
@@ -95,6 +103,7 @@ public class PreferencesActivity extends PreferenceActivity {
             final PreferenceCategory batterySaverOn = (PreferenceCategory) findPreference("battery_saver_on");
             final PreferenceCategory batterySaverOff = (PreferenceCategory) findPreference("battery_saver_off");
             PreferenceScreen appServiceManager = (PreferenceScreen) findPreference("app_services_manager");
+            PreferenceScreen appReceiverManager = (PreferenceScreen) findPreference("app_receivers_manager");
             PreferenceScreen settings = (PreferenceScreen) findPreference("settings");
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
@@ -133,6 +142,7 @@ public class PreferencesActivity extends PreferenceActivity {
                 }
 
                 mainSettings.removePreference(appServiceManager);
+                mainSettings.removePreference(appReceiverManager);
             }
 
             reloadAppsList();
@@ -378,6 +388,7 @@ public class PreferencesActivity extends PreferenceActivity {
         public class LoadApps extends AsyncTask<Void, Void, Void> {
             PreferenceCategory appSettings = (PreferenceCategory) findPreference("app_settings");
             PreferenceCategory appServiceSettings = (PreferenceCategory) findPreference("app_service_settings");
+            PreferenceCategory appReceiverSettings = (PreferenceCategory) findPreference("app_receiver_settings");
 
             PackageManager pm = mContext.getPackageManager();
             List<ApplicationInfo> packages = pm
@@ -388,6 +399,7 @@ public class PreferencesActivity extends PreferenceActivity {
                 List<String[]> sortedApps = new ArrayList<>();
                 if (appSettings != null) appSettings.removeAll();
                 if (appServiceSettings != null) appServiceSettings.removeAll();
+                if (appReceiverSettings != null) appReceiverSettings.removeAll();
                 for (ApplicationInfo app : packages) {
                     if (isAllowedApp(app)) {
                         sortedApps.add(new String[]{
@@ -409,10 +421,13 @@ public class PreferencesActivity extends PreferenceActivity {
                     final String packageName = sortedApps.get(i)[0];
                     Preference appPreference = new Preference(mContext);
                     Preference servicePreference = new Preference(mContext);
+                    Preference receiverPreference = new Preference(mContext);
                     appPreference.setTitle(appName);
                     servicePreference.setTitle(appName);
+                    receiverPreference.setTitle(appName);
                     appPreference.setSummary(packageName);
                     servicePreference.setSummary(packageName);
+                    receiverPreference.setSummary(packageName);
                     appPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                         @Override
                         public boolean onPreferenceClick(Preference preference) {
@@ -426,7 +441,6 @@ public class PreferencesActivity extends PreferenceActivity {
 
                     if (appSettings != null) appSettings.addPreference(appPreference);
 
-                    servicePreference.setOnPreferenceClickListener(null);
                     servicePreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                         @Override
                         public boolean onPreferenceClick(Preference preference) {
@@ -440,6 +454,20 @@ public class PreferencesActivity extends PreferenceActivity {
 
                     if (appServiceSettings != null)
                         appServiceSettings.addPreference(servicePreference);
+
+                    receiverPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                        @Override
+                        public boolean onPreferenceClick(Preference preference) {
+                            Intent openAppSettings = new Intent(mContext, AppReceiverSettingsActivity.class);
+                            openAppSettings.putExtra("package", packageName);
+                            openAppSettings.putExtra("app", appName);
+                            startActivity(openAppSettings);
+                            return false;
+                        }
+                    });
+
+                    if (appReceiverSettings != null)
+                        appReceiverSettings.addPreference(receiverPreference);
                 }
 
                 return null;

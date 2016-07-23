@@ -85,5 +85,8 @@
     <string name="no_auto_sync_control">Do not use auto sync</string>
     <string name="parallel_doze_mode">Parallel with Doze mode</string>
     <string name="no_receivers">Do no start receivers</string>
+    <string name="show_system_receivers">Show system receivers</string>
+    <string name="app_receivers_manager">App receivers manager</string>
+    <string name="app_receiver_settings">App receiver settings</string>
 
 </resources>
