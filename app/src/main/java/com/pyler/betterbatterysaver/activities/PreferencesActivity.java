@@ -45,6 +45,10 @@ public class PreferencesActivity extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         mContext = getApplicationContext();
 
+        /*RootSharedPreferences s = new RootSharedPreferences(mContext, "com.devadvance.rootcloak2.debug");
+        s.init();
+        boolean a = s.getSharedPreferences().getBoolean("native_library_installed", false);
+        Toast.makeText(this, a + " " + ((s.getEditor() == null) ? "yes" : " no"),Toast.LENGTH_LONG).show();*/
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new Settings()).commit();
     }
