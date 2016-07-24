@@ -45,10 +45,12 @@ public class PreferencesActivity extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         mContext = getApplicationContext();
 
-        /*RootSharedPreferences s = new RootSharedPreferences(mContext, "com.devadvance.rootcloak2.debug");
+        /*RootSharedPreferences s = new RootSharedPreferences(mContext, "de.robv.android.xposed.installer");
         s.init();
-        boolean a = s.getSharedPreferences().getBoolean("native_library_installed", false);
-        Toast.makeText(this, a + " " + ((s.getEditor() == null) ? "yes" : " no"),Toast.LENGTH_LONG).show();*/
+        Map<String, ?> k = s.getSharedPreferences().getAll();
+        for (Map.Entry g : k.entrySet()) {
+            Toast.makeText(this, g.getKey() + ": " + g.getValue(), Toast.LENGTH_LONG).show();
+        }*/
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new Settings()).commit();
     }

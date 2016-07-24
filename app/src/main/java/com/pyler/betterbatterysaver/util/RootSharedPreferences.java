@@ -49,6 +49,7 @@ public class RootSharedPreferences {
             if (!Shell.SU.available()) {
                 return false;
             }
+
             Shell.SU.run("chmod 777 " + sharedPreferencesFile);
         }
 
